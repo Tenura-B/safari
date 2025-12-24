@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+/* Then update the h1 class to: font-['Permanent_Marker'] */
+
+.font-wild {
+    font-family: 'Permanent Marker', cursive;
+  }

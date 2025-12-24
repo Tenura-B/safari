@@ -1,0 +1,116 @@
+import React, { useEffect, useState } from 'react';
+import { Send, MapPin, Phone, Mail } from 'lucide-react';
+
+const ContactSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('contact-section');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+          setIsVisible(true);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section 
+      id="contact-section" 
+      className="py-24 px-6 md:px-20 overflow-hidden" 
+      style={{ backgroundColor: '#050505' }}
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
+        
+        {/* Left Column: Info */}
+        <div className={`transition-all duration-1000 transform ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <span className="text-[#FFC107] uppercase tracking-[0.4em] font-bold text-xs italic block mb-4">
+            Start Your Journey
+          </span>
+          <h2 
+            className="text-5xl md:text-7xl font-black italic text-white uppercase leading-none mb-8"
+            style={{ fontFamily: "'Permanent Marker', cursive" }}
+          >
+            Get In <span className="text-zinc-700">Touch</span>
+          </h2>
+          <p className="text-zinc-400 text-lg mb-12 max-w-md leading-relaxed font-medium">
+            Whether you're ready to book or just have a few questions about the wildlife, our trackers are standing by.
+          </p>
+
+          <div className="space-y-8">
+            {[
+              { icon: <MapPin className="text-[#FFC107]" />, text: "Yala National Park, Sri Lanka" },
+              { icon: <Phone className="text-[#FFC107]" />, text: "+94 77 123 4567" },
+              { icon: <Mail className="text-[#FFC107]" />, text: "hello@wildpack.com" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-6 group cursor-pointer">
+                <div className="w-12 h-12 rounded-full border border-[#FFC107] flex items-center justify-center group-hover:bg-[#FFC107] group-hover:border-[#FFC107] transition-all duration-300">
+                  {React.cloneElement(item.icon, { size: 20, className: "text-white" })}
+                </div>
+                <span className="text-zinc-300 font-bold uppercase tracking-widest text-sm group-hover:text-white transition-colors">
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Column: Animated Form */}
+        <div className={`relative bg-zinc-900/50 p-8 md:p-12 border border-zinc-800 transition-all duration-1000 delay-300 transform ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
+        }`}>
+          <form className="space-y-10">
+            {/* Input Fields with Animated Bottom Borders */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {['Your Name', 'Email Address'].map((label, i) => (
+                <div key={i} className="relative group">
+                  <input 
+                    type="text" 
+                    required 
+                    className="w-full bg-transparent border-b border-zinc-700 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors peer"
+                    placeholder=" "
+                  />
+                  <label className="absolute left-0 top-3 text-zinc-500 uppercase text-xs font-bold tracking-widest transition-all peer-focus:-top-4 peer-focus:text-[#FFC107] peer-placeholder-shown:top-3">
+                    {label}
+                  </label>
+                  <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#FFC107] transition-all duration-500 group-hover:w-full"></div>
+                </div>
+              ))}
+            </div>
+
+            <div className="relative group">
+              <textarea 
+                rows="4" 
+                required 
+                className="w-full bg-transparent border-b border-zinc-700 py-3 text-white focus:outline-none focus:border-[#FFC107] transition-colors peer resize-none"
+                placeholder=" "
+              ></textarea>
+              <label className="absolute left-0 top-3 text-zinc-500 uppercase text-xs font-bold tracking-widest transition-all peer-focus:-top-4 peer-focus:text-[#FFC107] peer-placeholder-shown:top-3">
+                Your Message
+              </label>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FFC107] transition-all duration-500 group-hover:w-full"></div>
+            </div>
+
+            <button className="w-full group relative overflow-hidden bg-[#FFC107] text-black py-5 uppercase font-black italic tracking-[0.3em] text-sm flex items-center justify-center gap-3 transition-transform active:scale-95">
+              <span className="relative z-10 flex items-center gap-3">
+                Send Message <Send size={16} className="group-hover:translate-x-2 group-hover:-translate-y-1 transition-transform" />
+              </span>
+              <div className="absolute inset-0 bg-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            </button>
+          </form>
+
+          {/* Decorative Corner */}
+          <div className="absolute -top-2 -right-2 w-8 h-8 border-t-2 border-r-2 border-[#FFC107]"></div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;

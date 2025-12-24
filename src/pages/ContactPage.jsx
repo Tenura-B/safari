@@ -1,0 +1,78 @@
+import React from 'react'
+import Navbar from '../components/Navbar'
+import ContactHero from '../components/contact/ContactHero'
+import MapSection from '../components/contact/MapSection'
+
+function ContactPage() {
+    const navbarItems = [
+        {
+            label: "Home",
+            bgColor: "#0D0716",
+            textColor: "#fff",
+            links: [
+                { label: "Home Page", ariaLabel: "Home Page", href: "/" }
+            ]
+        },
+        {
+            label: "About",
+            bgColor: "#170D27",
+            textColor: "#fff",
+            links: [
+                { label: "About Us", ariaLabel: "About Us", href: "/about" }
+            ]
+        },
+        {
+            label: "Services",
+            bgColor: "#271E37",
+            textColor: "#fff",
+            links: [
+                { label: "Our Services", ariaLabel: "Our Services", href: "#services" }
+            ]
+        },
+        {
+            label: "Contact",
+            bgColor: "#0D0716",
+            textColor: "#fff",
+            links: [
+                { label: "Contact Us", ariaLabel: "Contact Us", href: "#contact" }
+            ]
+        },
+        {
+            label: "Gallery",
+            bgColor: "#170D27",
+            textColor: "#fff",
+            links: [
+                { label: "Gallery", ariaLabel: "Gallery", href: "#gallery" }
+            ]
+        },
+        {
+            label: "Blog",
+            bgColor: "#271E37",
+            textColor: "#fff",
+            links: [
+                { label: "Blog", ariaLabel: "Blog", href: "#blog" }
+            ]
+        }
+    ]
+
+    return (
+        <div className="ContactPage w-full">
+            <section>
+                <Navbar
+                    logo={null}
+                    logoAlt=""
+                    items={navbarItems}
+                    baseColor="#1a1a1a"
+                    menuColor="#fff"
+                    buttonBgColor="#ffd700"
+                    buttonTextColor="#000"
+                    ease="power3.out"
+                />
+              </section>
+              <ContactHero />
+              <MapSection />
+        </div>
+    )
+}
+
+export default ContactPage
