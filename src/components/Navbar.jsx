@@ -14,13 +14,13 @@ const Navbar = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  // FIXED: Changed Services to isSection: false and href: "/services"
   const navItems = [
     { label: "Home", href: "/", isSection: false, bgColor: "#0D0716" },
     { label: "About", href: "/about", isSection: false, bgColor: "#170D27" },
     { label: "Services", href: "/services", isSection: false, bgColor: "#271E37" },
     { label: "Gallery", href: "#gallery", isSection: true, bgColor: "#170D27" },
-    { label: "Blog", href: "#blog", isSection: true, bgColor: "#271E37" },
+    // FIXED: isSection is now false to trigger page navigation
+    { label: "Blog", href: "/blog", isSection: false, bgColor: "#271E37" }, 
     { label: "Contact", href: "/contact", isSection: false, bgColor: "#0D0716" },
   ];
 
@@ -43,8 +43,9 @@ const Navbar = ({
         if (el) el.scrollIntoView({ behavior: "smooth" });
       }
     } else {
-      // This will now handle the "Jump" to the Services Page correctly
+      // This will now successfully "Jump" to /blog or /services
       navigate(item.href);
+      window.scrollTo(0, 0); // Ensures the new page starts at the top
     }
     if (isExpanded) toggleMenu();
   };
@@ -97,7 +98,7 @@ const Navbar = ({
         <div className="card-nav-top h-[60px] flex items-center justify-between px-6">
           <div className="logo-container cursor-pointer" onClick={() => navigate('/')}>
              <span className="text-xl font-black italic text-white uppercase tracking-tighter" style={{ fontFamily: "'Permanent Marker', cursive" }}>
-               Wild <span className="text-[#FFC107]">SHOW</span>
+                Wild <span className="text-[#FFC107]">SHOW</span>
              </span>
           </div>
 

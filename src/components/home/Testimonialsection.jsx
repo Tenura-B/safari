@@ -64,7 +64,7 @@ const Testimonialsection = () => {
               />
 
               {/* DARK OVERLAY */}
-              <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] group-hover:bg-black/60 transition-colors duration-500" />
+              <div className="absolute inset-0 bg-black/70 backdrop-blur-[0.2px] group-hover:bg-black/60 transition-colors duration-500" />
 
               {/* CONTENT */}
               <div className="relative z-10 p-8">

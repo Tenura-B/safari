@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import ServicesSection from '../components/Services/ServicesSection';
 import ExpeditionDetail from '../components/Services/ExpeditionDetail';
+import MorningEveningRaid from '../components/Services/MorningEveningRaid';
+import CampSection from '../components/Services/CampSection';
+
 
 function ServicesPage() {
     // Force scroll to top when this page loads
@@ -20,6 +23,8 @@ function ServicesPage() {
             <main className="pt-24 bg-white"> 
                 <ServicesSection />
                 <ExpeditionDetail />
+                <MorningEveningRaid />
+                <CampSection /> 
             </main>
         </div>
     );
