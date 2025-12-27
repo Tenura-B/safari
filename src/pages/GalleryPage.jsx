@@ -1,12 +1,8 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import AboutHero from '../components/about/AboutHero'
-import OurStory from '../components/about/OurStory'
-import Philosophy from '../components/about/Philosophy'
-import TeamSection from '../components/about/TeamSection'
-import ImpactSection from '../components/about/ImpactSection'
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Gallery from '../components/home/gallery';
 
-function AboutPage() {
+function GalleryPage() {
     const navbarItems = [
         {
             label: "Home",
@@ -56,10 +52,10 @@ function AboutPage() {
                 { label: "Blog", ariaLabel: "Blog", href: "/blog" }
             ]
         }
-    ]
+    ];
 
     return (
-        <div className="AboutPage w-full">
+        <div className="GalleryPage w-full">
             <section>
                 <Navbar
                     logo={null}
@@ -71,15 +67,10 @@ function AboutPage() {
                     buttonTextColor="#000"
                     ease="power3.out"
                 />
-                
             </section>
-            <AboutHero />
-            <OurStory />
-            <Philosophy />
-            <TeamSection />
-            <ImpactSection />
+            <Gallery />
         </div>
-    )
+    );
 }
 
-export default AboutPage
+export default GalleryPage;

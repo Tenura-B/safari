@@ -28,7 +28,7 @@ function BlogPage() {
             bgColor: "#271E37",
             textColor: "#fff",
             links: [
-                { label: "Our Services", ariaLabel: "Our Services", href: "#services" }
+                { label: "Our Services", ariaLabel: "Our Services", href: "/services" }
             ]
         },
         {
@@ -52,7 +52,7 @@ function BlogPage() {
             bgColor: "#271E37",
             textColor: "#fff",
             links: [
-                { label: "Blog", ariaLabel: "Blog", href: "#blog" }
+                { label: "Blog", ariaLabel: "Blog", href: "/blog" }
             ]
         }
     ]

@@ -26,13 +26,13 @@ const testimonials = [
 
 const Testimonialsection = () => {
   return (
-    <section className="py-24 px-6 font-sans" style={{ backgroundColor: '#050505' }}>
+    <section className="py-12 sm:py-16 md:py-24 px-4 sm:px-6 font-sans" style={{ backgroundColor: '#050505' }}>
       <div className="max-w-6xl mx-auto text-center">
 
         <h2
           data-aos="fade-up"
           data-aos-duration="1500"
-          className="text-3xl md:text-4xl font-bold text-orange-500 uppercase tracking-widest"
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-500 uppercase tracking-widest"
         >
           Testimonials
         </h2>
@@ -41,19 +41,19 @@ const Testimonialsection = () => {
           data-aos="fade-up"
           data-aos-delay="200"
           data-aos-duration="1500"
-          className="w-20 h-1 bg-orange-500 mx-auto mt-3 mb-16 rounded-full"
+          className="w-16 sm:w-20 h-1 bg-orange-500 mx-auto mt-3 mb-8 sm:mb-12 md:mb-16 rounded-full"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-12 mt-10 sm:mt-16 md:mt-20">
           {testimonials.map((item, index) => (
             <div
               key={index}
               data-aos="fade-up"
               data-aos-duration="1500"
               data-aos-delay={index * 200}
-              className={`relative overflow-hidden rounded-2xl transition-all duration-500 group border border-white/10 ${
+              className={`relative overflow-hidden rounded-xl md:rounded-2xl transition-all duration-500 group border border-white/10 ${
                 index === 1
-                  ? 'md:scale-110 z-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
+                  ? 'md:scale-105 lg:scale-110 z-20 shadow-[0_20px_50px_rgba(0,0,0,0.5)]'
                   : 'z-10'
               }`}
             >
@@ -67,18 +67,18 @@ const Testimonialsection = () => {
               <div className="absolute inset-0 bg-black/70 backdrop-blur-[0.2px] group-hover:bg-black/60 transition-colors duration-500" />
 
               {/* CONTENT */}
-              <div className="relative z-10 p-8">
+              <div className="relative z-10 p-6 sm:p-8">
                 <div className="text-left">
-                  <p className="text-gray-200 text-sm italic mb-8 min-h-[120px]">
-                    “{item.quote}”
+                  <p className="text-gray-200 text-xs sm:text-sm italic mb-6 sm:mb-8 min-h-[100px] sm:min-h-[120px]">
+                    "{item.quote}"
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-white/10">
-                  <h4 className="text-orange-500 font-bold text-lg">
+                <div className="pt-4 sm:pt-6 border-t border-white/10">
+                  <h4 className="text-orange-500 font-bold text-base sm:text-lg">
                     {item.name}
                   </h4>
-                  <span className="text-white/60 text-[10px] uppercase tracking-[0.2em]">
+                  <span className="text-white/60 text-[9px] sm:text-[10px] uppercase tracking-[0.2em]">
                     {item.role}
                   </span>
                 </div>

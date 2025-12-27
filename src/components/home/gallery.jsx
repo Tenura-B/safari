@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import img1 from '../../assets/images/1.jpg';
 import img2 from '../../assets/images/2.jpg';
 import img3 from '../../assets/images/3.jpg';
@@ -12,6 +12,17 @@ import imgTuos from '../../assets/images/tuos.jpg';
 import imgTesti from '../../assets/images/testi.jpg';
 
 const Gallery = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
   const images = [
     { id: 1, src: img1, colSpan: 1, rowSpan: 4 },
     { id: 2, src: img2, colSpan: 1, rowSpan: 3 },
@@ -35,17 +46,16 @@ const Gallery = () => {
 
   return (
     <section
-      className="relative py-8 px-4 md:px-8 min-h-screen overflow-hidden"
+      className="relative py-8 px-4 sm:px-6 md:px-8 min-h-screen overflow-hidden"
       style={{ backgroundColor: '#050505' }}
     >
       <div className="relative z-20 max-w-[1400px] mx-auto">
 
         {/* GALLERY GRID */}
         <div
-          className="grid gap-2"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3"
           style={{
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gridAutoRows: '150px',
+            gridAutoRows: isDesktop ? '150px' : '200px',
           }}
         >
           {images.map((img, index) => (
@@ -56,8 +66,8 @@ const Gallery = () => {
               data-aos-delay={index * 150}
               className="relative overflow-hidden rounded-md bg-[#4a1e4a] group cursor-pointer border-2 border-white"
               style={{
-                gridColumn: `span ${img.colSpan}`,
-                gridRow: `span ${img.rowSpan}`,
+                gridColumn: isDesktop ? `span ${img.colSpan}` : 'span 1',
+                gridRow: isDesktop ? `span ${img.rowSpan}` : 'span 2',
               }}
             >
               <img

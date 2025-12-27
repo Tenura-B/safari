@@ -2,22 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
-// ✅ CORRECT IMAGE PATH
+// ✅ CORRECT IMAGE PATH (NO /src)
 import executiveCarImg from "../../assets/images/executive-car.jpg";
-
-// 🔹 Animation Variants
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 }
-  }
-};
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0 }
-};
 
 const TaxiServiceSection = () => {
   const serviceFeatures = [
@@ -27,94 +13,70 @@ const TaxiServiceSection = () => {
   ];
 
   return (
-    <motion.section
-      variants={container}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true }}
-      className="py-24 px-6 md:px-20 bg-white overflow-hidden"
-    >
+    <section className="py-24 px-6 md:px-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        {/* LEFT: IMAGE */}
+        {/* LEFT SIDE: IMAGE */}
         <motion.div
-          initial={{ opacity: 0, x: -60, scale: 0.95 }}
-          whileInView={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="relative"
         >
           <div className="rounded-[30px] overflow-hidden shadow-2xl">
-            <motion.img
+            <img
               src={executiveCarImg}
               alt="Executive Car Service"
               className="w-full h-[400px] md:h-[500px] object-cover"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.6 }}
             />
           </div>
 
           {/* PRICE BADGE */}
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.6, type: "spring", stiffness: 120 }}
-            className="absolute bottom-6 right-6 bg-[#1a1a1a] text-[#FFC107] px-6 py-3 rounded-xl font-black text-sm shadow-xl"
-          >
+          <div className="absolute bottom-6 right-6 bg-[#1a1a1a] text-[#FFC107] px-6 py-3 rounded-xl font-black text-sm shadow-xl">
             From $10 / Ride
-          </motion.div>
+          </div>
         </motion.div>
 
-        {/* RIGHT: CONTENT */}
-        <motion.div variants={container} className="space-y-8">
+        {/* RIGHT SIDE: CONTENT */}
+        <div className="space-y-8">
+          <header>
+            <h3
+              className="text-5xl md:text-7xl font-black italic uppercase text-zinc-900 leading-[0.9] mb-4"
+              style={{ fontFamily: "'Permanent Marker', cursive" }}
+            >
+              EXECUTIVE CAR <br />
+              <span className="text-zinc-400">SERVICE</span>
+            </h3>
 
-          {/* TITLE */}
-          <motion.h3
-            variants={item}
-            className="text-5xl md:text-7xl font-black italic uppercase text-zinc-900 leading-[0.9]"
-            style={{ fontFamily: "'Permanent Marker', cursive" }}
-          >
-            EXECUTIVE CAR <br />
-            <span className="text-zinc-400">SERVICE</span>
-          </motion.h3>
-
-          {/* DESCRIPTION */}
-          <motion.p
-            variants={item}
-            className="text-zinc-500 text-lg leading-relaxed max-w-lg"
-          >
-            Experience unparalleled luxury with our executive airport fleet.
-            Perfect for business travel, night runs, or premium city rides.
-          </motion.p>
+            <p className="text-zinc-500 text-lg leading-relaxed max-w-lg mt-6">
+              Experience unparalleled luxury with our executive airport fleet.
+              Perfect for business travel, night runs, or premium city rides.
+            </p>
+          </header>
 
           {/* FEATURES */}
-          <motion.ul variants={container} className="space-y-4">
+          <ul className="space-y-4">
             {serviceFeatures.map((feature, idx) => (
-              <motion.li
+              <li
                 key={idx}
-                variants={item}
                 className="flex items-center gap-3 text-zinc-500 font-bold uppercase italic text-xs tracking-widest"
               >
                 <CheckCircle2 size={18} className="text-[#FFC107]" />
                 {feature}
-              </motion.li>
+              </li>
             ))}
-          </motion.ul>
+          </ul>
 
-          {/* BUTTON */}
-          <motion.div variants={item} className="pt-6">
-            <motion.button
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-14 py-4 border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest text-xs hover:bg-zinc-900 hover:text-white transition-all rounded-lg shadow-md"
-            >
+          <div className="pt-6">
+            <button className="px-14 py-4 border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest text-xs hover:bg-zinc-900 hover:text-white transition-all rounded-lg shadow-md">
               BOOK NOW
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
+        </div>
 
-        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

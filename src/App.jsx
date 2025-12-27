@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import ServicesPage from './pages/ServicesPage'
+import GalleryPage from './pages/GalleryPage'
 import TaxiPage from './pages/TaxiPage'
 import BlogPage from './pages/BlogPage'
 import Footer from './components/footer'
@@ -17,6 +18,7 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/services" element={<ServicesPage />} />
                     <Route path="/contact" element={<ContactPage />} />
+                    <Route path="/gallery" element={<GalleryPage />} />
                     <Route path="/taxi" element={<TaxiPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                 </Routes>

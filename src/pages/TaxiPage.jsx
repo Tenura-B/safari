@@ -21,13 +21,13 @@ const TaxiPage = () => {
       label: "Services",
       bgColor: "#271E37",
       textColor: "#fff",
-      links: [{ label: "Our Services", ariaLabel: "Our Services", href: "#services" }]
+      links: [{ label: "Our Services", ariaLabel: "Our Services", href: "/services" }]
     },
     {
       label: "Contact",
       bgColor: "#0D0716",
       textColor: "#fff",
-      links: [{ label: "Contact Us", ariaLabel: "Contact Us", href: "#contact" }]
+      links: [{ label: "Contact Us", ariaLabel: "Contact Us", href: "/contact" }]
     },
     {
       label: "Gallery",
@@ -39,7 +39,7 @@ const TaxiPage = () => {
       label: "Blog",
       bgColor: "#271E37",
       textColor: "#fff",
-      links: [{ label: "Blog", ariaLabel: "Blog", href: "#blog" }]
+      links: [{ label: "Blog", ariaLabel: "Blog", href: "/blog" }]
     }
   ];
 
