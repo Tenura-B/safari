@@ -8,10 +8,12 @@ import GalleryPage from './pages/GalleryPage'
 import TaxiPage from './pages/TaxiPage'
 import BlogPage from './pages/BlogPage'
 import Footer from './components/footer'
+import ScrollToTop from './components/ScrollToTop'
 
 function App() {
     return (
         <Router>
+            <ScrollToTop />
             <div className="App w-full bg-zinc-950 min-h-screen">
                 <Routes>
                     <Route path="/" element={<HomePage />} />

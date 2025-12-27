@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Compass, Camera, Tent, Car } from 'lucide-react';
 import campingImg from '../../assets/images/camping.jpg';
 import photographyImg from '../../assets/images/photoghapy.jpg';
@@ -7,6 +8,8 @@ import geepImg from '../../assets/images/geep.jpg';
 import bgImage from '../../assets/images/services-bg.jpg'; // Your background image
 
 const Services = () => {
+  const navigate = useNavigate();
+  
   return (
     <section className="relative w-full min-h-screen text-white py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 overflow-hidden">
       
@@ -68,11 +71,14 @@ const Services = () => {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-3 md:mb-4 border border-yellow-500/30">
                   <Compass className="text-yellow-500 w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">Guided Safaris</h3>
+                <h3 className="text-2xl md:text-3xl font-bold mb-2">Safari Jeep</h3>
                 <p className="text-[10px] sm:text-xs text-gray-300 max-w-xs mb-4 md:mb-6">
                   Expert guidance through the deep jungle trails of Yala and Wilpattu.
                 </p>
-                <button className="bg-yellow-500 text-black text-[9px] sm:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-lg uppercase tracking-widest hover:bg-yellow-400 transition">
+                <button 
+                  onClick={() => navigate('/services')}
+                  className="bg-yellow-500 text-black text-[9px] sm:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-lg uppercase tracking-widest hover:bg-yellow-400 transition"
+                >
                   Explore More
                 </button>
               </div>
@@ -107,7 +113,10 @@ const Services = () => {
                 <p className="text-[10px] sm:text-xs text-gray-400 max-w-sm mb-4 md:mb-6">
                   Reliable and comfortable transportation services for your safari adventures and travel needs.
                 </p>
-                <button className="bg-yellow-500 text-black text-[9px] sm:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-lg uppercase tracking-widest hover:bg-yellow-400 transition">
+                <button 
+                  onClick={() => navigate('/taxi')}
+                  className="bg-yellow-500 text-black text-[9px] sm:text-[10px] font-bold px-3 md:px-4 py-1.5 md:py-2 rounded-lg uppercase tracking-widest hover:bg-yellow-400 transition"
+                >
                   Explore More
                 </button>
               </div>

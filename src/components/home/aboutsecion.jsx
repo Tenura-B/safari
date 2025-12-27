@@ -1,7 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion'; // Importing Framer Motion for advanced UI
+import { useNavigate } from 'react-router-dom';
 
 const AboutUs = () => {
+  const navigate = useNavigate();
+  
   // Animation variant for the continuous floating effect
   const floatingVariant = {
     initial: { y: 0 },
@@ -57,9 +60,10 @@ const AboutUs = () => {
             <motion.button 
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate('/about')}
               className="mt-6 md:mt-10 bg-yellow-500 text-black font-bold py-2 md:py-3 px-6 md:px-8 rounded-lg text-[10px] sm:text-xs tracking-widest hover:bg-yellow-400 transition"
             >
-              MEET THE TEAM
+              ABOUT US
             </motion.button>
           </div>
         </div>

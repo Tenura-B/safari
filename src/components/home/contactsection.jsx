@@ -44,9 +44,9 @@ const ContactSection = () => {
 
           <div className="space-y-6 md:space-y-8">
             {[
-              { icon: <MapPin className="text-[#FFC107]" />, text: "Yala National Park, Sri Lanka" },
-              { icon: <Phone className="text-[#FFC107]" />, text: "+94 77 123 4567" },
-              { icon: <Mail className="text-[#FFC107]" />, text: "hello@wildpack.com" }
+              { icon: <MapPin className="text-[#FFC107]" />, text: "Pidurangala, Sigiriya, Sri Lanka" },
+              { icon: <Phone className="text-[#FFC107]" />, text: "+94 71 740 2688" },
+              { icon: <Mail className="text-[#FFC107]" />, text: "nalinsigiri@gmail.com" }
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 md:gap-6 group cursor-pointer">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#FFC107] flex items-center justify-center group-hover:bg-[#FFC107] group-hover:border-[#FFC107] transition-all duration-300">

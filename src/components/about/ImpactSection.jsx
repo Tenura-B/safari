@@ -65,7 +65,7 @@ const ImpactSection = () => {
             ].map((item, i) => (
               <div key={i} className={`flex items-start gap-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} ${item.delay}`}>
                 <div className="bg-[#FFC107]/10 p-2 rounded-full">
-                  <CheckCircle2 className="text-[#FFC107] w-7 h-7 flex-shrink-0" />
+                  <CheckCircle2 className="text-[#FFC107] w-7 h-7 shrink-0" />
                 </div>
                 <div>
                   <h4 className="font-black uppercase italic tracking-widest text-lg text-white">{item.title}</h4>
@@ -82,7 +82,7 @@ const ImpactSection = () => {
         </div>
 
         {/* Right Overlapping Images Column */}
-        <div className="relative h-[600px] flex items-center justify-center group">
+        <div className="relative h-150 flex items-center justify-center group">
           
           {/* Background Frame - Rotates and scales */}
           <div className={`absolute inset-0 border border-zinc-800 transition-all duration-1000 transform ${

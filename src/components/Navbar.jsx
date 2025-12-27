@@ -96,7 +96,7 @@ const Navbar = ({
             className="text-xl font-black italic text-white cursor-pointer"
             onClick={() => handleNavigate("/")}
           >
-           SAFARI TALES <span className="text-[#FFC107]">BY PODI</span>
+            SAFARI TALES <span className="text-[#FFC107]">BY PODI</span>
           </div>
 
           {/* ---------------- DESKTOP NAV ---------------- */}
