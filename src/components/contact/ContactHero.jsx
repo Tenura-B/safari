@@ -70,7 +70,7 @@ const ContactHero = () => {
 
           <motion.div variants={container} className="mt-10 space-y-5">
             {[
-              { icon: <MapPin />, label: 'Location', val: 'Sri Lanka' },
+              { icon: <MapPin />, label: 'Location', val: 'Pidurangala, Sigiriya, Sri Lanka' },
               { icon: <Phone />, label: 'Phone', val: '+94 77 123 4567' },
               { icon: <Mail />, label: 'Email', val: 'hello@email.com' }
             ].map((i, idx) => (
