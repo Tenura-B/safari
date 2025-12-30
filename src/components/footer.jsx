@@ -26,7 +26,7 @@ const Footer = () => {
     <footer className="bg-[#050505] text-zinc-400 py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-24 relative overflow-hidden border-t border-zinc-900">
 
       {/* Background Watermark */}
-      <div className="absolute bottom-[-20px] right-[-20px] pointer-events-none opacity-[0.03] select-none">
+      <div className="absolute -bottom-5 -right-5 pointer-events-none opacity-[0.03] select-none">
         <h1 className="text-[15vw] font-black italic uppercase text-white leading-none">
           WILD
         </h1>

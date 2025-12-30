@@ -2,6 +2,7 @@ import React from "react";
 import OtherNavbar from "../components/OtherNavbar";
 import TaxiHomeSection from "../components/Taxi/TaxiHomeSection";
 import TaxiServiceSection from "../components/Taxi/TaxiServiceSection";
+import TaxiCarSection from "../components/Taxi/TaxiCarSection";
 
 const TaxiPage = () => {
   const navbarItems = [
@@ -49,6 +50,7 @@ const TaxiPage = () => {
 
       <TaxiHomeSection />
       <TaxiServiceSection />
+      <TaxiCarSection />
     </div>
   );
 };
