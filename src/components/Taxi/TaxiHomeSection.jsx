@@ -6,11 +6,18 @@ import taxiBg from "../../assets/images/city-taxi-blur.jpg";
 /* ------------------ Animation Variants ------------------ */
 
 const bgVariants = {
-  hidden: { scale: 1.1, opacity: 0 },
+  hidden: { scale: 1.15, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { duration: 1.2, ease: "easeOut" }
+    transition: { duration: 1.5, ease: "easeOut" }
+  }
+};
+
+const bgFloat = {
+  animate: {
+    scale: [1, 1.03, 1],
+    transition: { duration: 18, repeat: Infinity, ease: "easeInOut" }
   }
 };
 
@@ -18,7 +25,7 @@ const textContainer = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.2
+      staggerChildren: 0.25
     }
   }
 };
@@ -28,18 +35,25 @@ const textItem = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: "easeOut" }
+    transition: { duration: 0.9, ease: "easeOut" }
+  }
+};
+
+const titleBreath = {
+  animate: {
+    scale: [1, 1.015, 1],
+    transition: { duration: 6, repeat: Infinity, ease: "easeInOut" }
   }
 };
 
 const cardVariant = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 50 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     transition: {
-      delay: i * 0.12,
-      duration: 0.6,
+      delay: i * 0.15,
+      duration: 0.7,
       ease: "easeOut"
     }
   })
@@ -65,7 +79,9 @@ const TaxiHomeSection = () => {
         animate="visible"
         className="absolute inset-0 z-0"
       >
-        <img
+        <motion.img
+          variants={bgFloat}
+          animate="animate"
           src={taxiBg}
           alt="City Taxi"
           className="w-full h-full object-cover brightness-75"
@@ -86,10 +102,13 @@ const TaxiHomeSection = () => {
         >
           <motion.h1
             variants={textItem}
+            animate="animate"
             className="text-6xl md:text-8xl font-black italic uppercase text-white drop-shadow-lg tracking-tighter"
             style={{ fontFamily: "'Permanent Marker', cursive" }}
           >
-            YOUR CITY'S <span className="text-[#FFC107]">BEST TAXI</span>
+            <motion.span variants={titleBreath} animate="animate">
+              YOUR CITY'S <span className="text-[#FFC107]">BEST TAXI</span>
+            </motion.span>
           </motion.h1>
 
           <motion.p
@@ -110,12 +129,19 @@ const TaxiHomeSection = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={{
+                scale: 1.06,
+                y: -8,
+                boxShadow: "0px 30px 60px rgba(0,0,0,0.25)"
+              }}
               className="bg-white p-8 rounded-sm shadow-2xl border-l-4 border-[#FFC107] group transition-all duration-300"
             >
-              <div className="text-[#FFC107] group-hover:text-black mb-4 transition-colors">
+              <motion.div
+                whileHover={{ rotate: 6 }}
+                className="text-[#FFC107] group-hover:text-black mb-4 transition-colors"
+              >
                 {service.icon}
-              </div>
+              </motion.div>
 
               <h4 className="text-[12px] font-black uppercase text-zinc-900 mb-2 group-hover:text-black">
                 {service.title}

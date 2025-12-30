@@ -6,32 +6,37 @@ import { Link } from "react-router-dom";
 // ✅ CORRECT IMAGE PATH
 import executiveCarImg from "../../assets/images/executive-car.jpg";
 
-/* ---------------- Animations ---------------- */
+/* ---------------- Animation Variants ---------------- */
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+const fadeSlideLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" }
+  }
+};
+
+const fadeSlideRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.7, ease: "easeOut" }
+  }
+};
 
 const imageFloat = {
   animate: {
-    y: [0, -12, 0],
-    transition: {
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  }
-};
-
-const contentContainer = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.2 }
-  }
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" }
+    y: [0, -8, 0],
+    transition: { duration: 5, repeat: Infinity, ease: "easeInOut" }
   }
 };
 
@@ -44,7 +49,7 @@ const badgePulse = {
 
 /* ---------------- Component ---------------- */
 
-const TaxiServiceSection = () => {
+const TaxiCarSection = () => {
   const serviceFeatures = [
     "Experienced chauffeurs",
     "Flight tracking",
@@ -55,45 +60,15 @@ const TaxiServiceSection = () => {
     <section className="py-24 px-6 md:px-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        {/* LEFT SIDE: IMAGE */}
+        {/* LEFT SIDE: CONTENT */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="relative"
-        >
-          <motion.div
-            variants={imageFloat}
-            animate="animate"
-            className="rounded-[30px] overflow-hidden shadow-2xl"
-          >
-            <img
-              src={executiveCarImg}
-              alt="Executive Car Service"
-              className="w-full h-100 md:h-125 object-cover"
-            />
-          </motion.div>
-
-          {/* PRICE BADGE */}
-          <motion.div
-            variants={badgePulse}
-            animate="animate"
-            className="absolute bottom-6 right-6 bg-[#1a1a1a] text-[#FFC107] px-6 py-3 rounded-xl font-black text-sm shadow-xl"
-          >
-            From $10 / Ride
-          </motion.div>
-        </motion.div>
-
-        {/* RIGHT SIDE: CONTENT */}
-        <motion.div
-          variants={contentContainer}
+          variants={container}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="space-y-8"
         >
-          <motion.header variants={fadeUp}>
+          <motion.header variants={fadeSlideLeft}>
             <h3
               className="text-5xl md:text-7xl font-black italic uppercase text-zinc-900 leading-[0.9] mb-4"
               style={{ fontFamily: "'Permanent Marker', cursive" }}
@@ -113,9 +88,9 @@ const TaxiServiceSection = () => {
             {serviceFeatures.map((feature, idx) => (
               <motion.li
                 key={idx}
-                variants={fadeUp}
-                whileHover={{ x: 10 }}
-                className="flex items-center gap-3 text-zinc-500 font-bold uppercase italic text-xs tracking-widest cursor-default"
+                variants={fadeSlideLeft}
+                whileHover={{ x: 8 }}
+                className="flex items-center gap-3 text-zinc-500 font-bold uppercase italic text-xs tracking-widest"
               >
                 <CheckCircle2 size={18} className="text-[#FFC107]" />
                 {feature}
@@ -123,14 +98,12 @@ const TaxiServiceSection = () => {
             ))}
           </ul>
 
-          <motion.div variants={fadeUp} className="pt-6">
+          <motion.div variants={fadeSlideLeft} className="pt-6">
             <Link to="/contact">
               <motion.button
-                whileHover={{
-                  y: -4,
-                  boxShadow: "0px 20px 40px rgba(0,0,0,0.2)"
-                }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ y: -4, boxShadow: "0 15px 30px rgba(0,0,0,0.2)" }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 220 }}
                 className="px-14 py-4 border-2 border-zinc-900 text-zinc-900 font-black uppercase tracking-widest text-xs hover:bg-zinc-900 hover:text-white transition-all rounded-lg shadow-md"
               >
                 BOOK NOW
@@ -139,9 +112,40 @@ const TaxiServiceSection = () => {
           </motion.div>
         </motion.div>
 
+        {/* RIGHT SIDE: IMAGE */}
+        <motion.div
+          variants={fadeSlideRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="relative"
+        >
+          <motion.div
+            variants={imageFloat}
+            animate="animate"
+            whileHover={{ scale: 1.03 }}
+            className="rounded-[30px] overflow-hidden shadow-2xl"
+          >
+            <img
+              src={executiveCarImg}
+              alt="Executive Car Service"
+              className="w-full h-100 md:h-125 object-cover"
+            />
+          </motion.div>
+
+          {/* PRICE BADGE */}
+          <motion.div
+            variants={badgePulse}
+            animate="animate"
+            className="absolute bottom-6 right-6 bg-[#1a1a1a] text-[#FFC107] px-6 py-3 rounded-xl font-black text-sm shadow-xl"
+          >
+            From $10 / Ride
+          </motion.div>
+        </motion.div>
+
       </div>
     </section>
   );
 };
 
-export default TaxiServiceSection;
+export default TaxiCarSection;
