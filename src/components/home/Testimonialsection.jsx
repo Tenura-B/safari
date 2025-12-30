@@ -112,12 +112,12 @@ const Testimonialsection = () => {
               >
                 {/* BACKGROUND IMAGE */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-300 group-hover:scale-110"
                   style={{ backgroundImage: `url(${item.bgImage})` }}
                 />
 
                 {/* DARK OVERLAY */}
-                <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px] group-hover:bg-black/60 transition-colors duration-500" />
+                <div className="absolute inset-0 bg-black/70 backdrop-blur-[0.0px] group-hover:bg-black/60 transition-colors duration-500" />
 
                 {/* CONTENT */}
                 <div className="relative z-10 p-8">

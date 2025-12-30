@@ -73,7 +73,7 @@ const DetailsSection = () => {
                 <motion.img
                   src={featuredImg}
                   alt="Safari Hiker"
-                  className="w-full h-[400px] md:h-[500px] object-cover"
+                  className="w-full h-150 md:h-150 object-cover"
                   whileHover={{ scale: 1.08, rotate: 0.5 }}
                   transition={{ type: "spring", stiffness: 120, damping: 12 }}
                 />

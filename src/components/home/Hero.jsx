@@ -67,7 +67,7 @@ const Hero = () => {
             style={{ fontFamily: "'Permanent Marker', cursive" }}
           >
             SAFARI TALES
-            <span className="block text-zinc-500">BY PODI</span>
+            <span className="block text-[#FFC107]">BY PODI</span>
           </h1>
 
           <p className="mt-6 tracking-[0.5em] uppercase text-zinc-300 text-xs">

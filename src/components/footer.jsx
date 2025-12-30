@@ -120,7 +120,7 @@ const Footer = () => {
             },
             {
               Icon: Instagram,
-              url: '#'
+              url: 'https://www.instagram.com/safartalesbypodi?igsh=OW8zNWdzcDQ3Mmhx&utm_source=qr'
             },
             
             

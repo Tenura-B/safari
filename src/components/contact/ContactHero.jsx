@@ -3,45 +3,13 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const ContactHero = () => {
-  // State for form data
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
-    message: ''
+    location: '',
+    members: '',
+    date: '',
+    time: ''
   });
-
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    // Format the message for WhatsApp
-    const whatsappNumber = '94717402688'; // Format without + and spaces
-    const message = `*New Contact Form Submission*
-
-Name: ${formData.name}
-Email: ${formData.email}
-Message: ${formData.message}`;
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Open WhatsApp with the pre-filled message
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
-    
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
-  };
 
   // Animations
   const container = {
@@ -68,6 +36,23 @@ Message: ${formData.message}`;
     }
   };
 
+  // ✅ WHATSAPP SUBMIT HANDLER
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const message = `
+Name: ${formData.name}
+Drop Location: ${formData.location}
+Members Count: ${formData.members}
+Date: ${formData.date}
+Time: ${formData.time}
+    `.trim();
+
+    const whatsappURL = `https://wa.me/94717402688?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
     <section className="relative min-h-screen bg-[#050505] flex items-center justify-center px-6 md:px-20 overflow-hidden">
 
@@ -92,27 +77,28 @@ Message: ${formData.message}`;
         {/* LEFT */}
         <motion.div variants={fadeInUp}>
           <motion.div className="flex items-center gap-4 mb-6" variants={fadeInUp}>
-            <span className="h-[2px] w-12 bg-[#FFC107]" />
+            <span className="h-0.5 w-12 bg-[#FFC107]" />
             <span className="text-[#FFC107] text-xs tracking-[0.4em] uppercase font-semibold">Contact Desk</span>
           </motion.div>
 
           <motion.h2
             variants={fadeInUp}
             className="text-6xl md:text-7xl font-extrabold uppercase text-white leading-tight"
-            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Let’s Talk
           </motion.h2>
 
           <motion.p variants={fadeInUp} className="mt-6 text-zinc-400 max-w-md">
             Have a question or project in mind? Send us a message and we’ll get back shortly.
+            <span className="block text-[#FFC107]">
+            Kindly note that bookings must be placed a minimum of 3 hours prior to the required time</span>
           </motion.p>
 
           <motion.div variants={container} className="mt-10 space-y-5">
             {[
               { icon: <MapPin />, label: 'Location', val: 'Pidurangala, Sigiriya, Sri Lanka' },
-              { icon: <Phone />, label: 'Phone', val: '+94 77 123 4567' },
-              { icon: <Mail />, label: 'Email', val: 'hello@email.com' }
+              { icon: <Phone />, label: 'Phone', val: '+94 71 740 2688' },
+              { icon: <Mail />, label: 'Email', val: 'nalinsigiri@gmail.com' }
             ].map((i, idx) => (
               <motion.div
                 key={idx}
@@ -120,7 +106,7 @@ Message: ${formData.message}`;
                 whileHover={{ x: 10 }}
                 className="flex items-center gap-4 cursor-pointer"
               >
-                <div className="w-12 h-12 flex items-center justify-center border border-zinc-800 text-[#FFC107] transition group-hover:rotate-12">
+                <div className="w-12 h-12 flex items-center justify-center border border-zinc-800 text-[#FFC107]">
                   {i.icon}
                 </div>
                 <div>
@@ -135,7 +121,6 @@ Message: ${formData.message}`;
         {/* RIGHT – FORM CARD */}
         <motion.div variants={fadeInUp} className="relative">
 
-          {/* Animated yellow notch */}
           <motion.div
             className="absolute -top-1 -right-1 w-20 h-20 bg-[#FFC107] z-20"
             style={{ clipPath: 'polygon(100% 0, 0 0, 100% 100%)' }}
@@ -151,51 +136,56 @@ Message: ${formData.message}`;
           >
             <form className="space-y-8" onSubmit={handleSubmit}>
 
-              {[{ t: 'text', p: 'Your Name', n: 'name' }, { t: 'email', p: 'Email Address', n: 'email' }].map((f, i) => (
+              <motion.input
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white placeholder:text-zinc-500 focus:border-[#FFC107] outline-none"
+              />
+
+              <motion.input
+                type="text"
+                placeholder="Drop Location"
+                value={formData.location}
+                onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white placeholder:text-zinc-500 focus:border-[#FFC107] outline-none"
+              />
+
+              {/* ✅ DATE + TIME (TWO COLUMN) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.input
-                  key={f.n}
-                  type={f.t}
-                  name={f.n}
-                  placeholder={f.p}
-                  value={formData[f.n]}
-                  onChange={handleChange}
-                  variants={fadeInUp}
-                  whileFocus={{ scale: 1.02 }}
-                  className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white placeholder:text-zinc-500 focus:border-[#FFC107] outline-none transition"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                  required
+                  type="date"
+                  value={formData.date}
+                  onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                  className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white focus:border-[#FFC107] outline-none"
                 />
-              ))}
+
+                <motion.input
+                  type="time"
+                  value={formData.time}
+                  onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                  className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white focus:border-[#FFC107] outline-none"
+                />
+              </div>
 
               <motion.textarea
                 rows={4}
-                name="message"
-                placeholder="Your Inquiry"
-                value={formData.message}
-                onChange={handleChange}
-                variants={fadeInUp}
-                whileFocus={{ scale: 1.02 }}
-                className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white placeholder:text-zinc-500 focus:border-[#FFC107] outline-none transition resize-none"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-                required
+                placeholder="Members Count"
+                value={formData.members}
+                onChange={(e) => setFormData({ ...formData, members: e.target.value })}
+                className="w-full bg-transparent border-b border-zinc-700 pb-3 text-white placeholder:text-zinc-500 focus:border-[#FFC107] outline-none resize-none"
               />
 
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full mt-6 py-4 bg-[#FFC107] text-black font-bold uppercase tracking-widest flex items-center justify-center gap-3 overflow-hidden relative"
+                className="w-full mt-6 py-4 bg-[#FFC107] text-black font-bold uppercase tracking-widest flex items-center justify-center gap-3 relative"
               >
-                <span className="relative z-10 flex items-center gap-3">
-                  Send Message <Send size={16} />
-                </span>
-                <motion.span
-                  className="absolute inset-0 bg-white"
-                  initial={{ y: '100%' }}
-                  whileHover={{ y: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                Send Message <Send size={16} />
               </motion.button>
+
             </form>
           </motion.div>
         </motion.div>

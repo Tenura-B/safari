@@ -88,7 +88,7 @@ const OtherNavbar = () => {
 
           {/* Right social */}
           <div className="flex items-center gap-3">
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
+            <a href="https://www.facebook.com/share/1P6yw4Q8P6/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
               <FaFacebookF />
             </a>
             <a href="https://wa.me/94717402688" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
@@ -100,7 +100,7 @@ const OtherNavbar = () => {
             <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
               <FaYoutube />
             </a>
-            <a href="https://www.tiktok.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
+            <a href="https://www.tiktok.com/@podi31_1686?_r=1&_t=ZS-92dHBzZvShp" target="_blank" rel="noopener noreferrer" className="hover:text-[#FFC107] cursor-pointer">
               <FaTiktok />
             </a>
           </div>
@@ -202,7 +202,7 @@ const OtherNavbar = () => {
             <a href="https://wa.me/94717402688" target="_blank" rel="noopener noreferrer" className="text-2xl text-white hover:text-[#FFC107] transition-colors">
               <IoLogoWhatsapp />
             </a>
-            <FiUser size={22} />
+          
 
             <a href="https://wa.me/94717402688" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[#FFC107] font-semibold hover:text-[#FFC107] transition-colors">
               <HiPhone size={22} />
